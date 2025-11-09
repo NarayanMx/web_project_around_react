@@ -1,4 +1,4 @@
-export default function NewCard() {
+export default function EditProfile() {
 
     const handleSubmit = (e) => {
     e.preventDefault();
