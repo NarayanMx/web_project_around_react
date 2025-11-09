@@ -4,30 +4,30 @@ export default function Popup(props) {
 
   const handleOverlayClick =(e) => {
     if (e.target === e.currentTarget) {
-      onClose();
+    onClose();
     }
   };
 
   return (
-    <div className="popup" onClick={handleOverlayClick}> 
-        <div className="popup__container">
 
-          <button className="popup__close-button" onClick={onClose}>
-            <img
-              src="./images/Close_Icon.png"
-              alt="botón para cerrar popup"
-              className="popup__close-image"
-            />
-          </button>
+  <div className="popup" onClick={handleOverlayClick}> 
+    <div className="popup__container">
 
-          <p className="popup__title">{title}</p>
+      <button className="popup__close-button" onClick={onClose}>
+        <img
+          src="./images/Close_Icon.png"
+          alt="botón para cerrar popup"
+          className="popup__close-image"
+        />
+      </button>
 
-          <div className="popup__limit">
+      <p className="popup__title">{title}</p>
 
-            {children}
-
-          </div>
-        </div>
+      <div className="popup__limit">
+        {children}
       </div>
+      
+    </div>
+  </div>
   )
 }
