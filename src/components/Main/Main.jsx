@@ -5,16 +5,26 @@ import NewCard from "./form/NewCard/NewCard.jsx"
 import EditProfile from "./form/EditProfile/EditProfile.jsx"
 import EditAvatar from "./form/EditAvatar/EditAvatar.jsx"
 
-
 function Main() {
 
-    const [Popup, setPopup] = useState(null);
+    const [popup, setPopup] = useState(null);
+
+    const handleClosePopup = () => {
+    setPopup(null);
+    };
+
 
 
   return (
-<section className="elements">
+    <section className="elements">
 
-</section>
+      {popup && (
+      <Popup onClose={handleClosePopup} title={popup.title}>
+      {popup.children}
+      </Popup>
+      )}
+    
+    </section>
   );
 }
 
