@@ -1,7 +1,7 @@
 import React from "react";
 import avatarImg from "../../../images/Profile_pic.png";
 
-function Profile() {
+function Profile({ onOpenPopup }) {
   return (
 
 <section className="profile">
