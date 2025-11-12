@@ -24,7 +24,11 @@ function Main() {
 
   return (
 <>
-      <Profile onOpenPopup={handleOpenPopup} />
+      <Profile onOpenPopup={handleOpenPopup}
+      newCardPopup={newCardPopup}
+      editProfilePopup={editProfilePopup}
+      editAvatarPopup={editAvatarPopup}
+       />
 
 
     <section className="elements">
