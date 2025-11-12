@@ -5,6 +5,22 @@ import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 
 function App() {
+
+    const [popup, setPopup] = useState(null);
+
+    const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
+    const editProfilePopup = { title: "Editar Perfíl", children: <EditProfile /> };
+    const editAvatarPopup = { title: "Editar Avatar", children: <EditAvatar /> };
+
+    const handleClosePopup = () => {
+    setPopup(null);
+    };
+
+    const handleOpenPopup = (popup) => {
+    setPopup(popup);
+    };
+
+
   return (
     <div className="page">
       <Header />
