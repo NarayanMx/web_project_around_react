@@ -1,4 +1,4 @@
-.elements{
+.cards__list{
 max-width: 880px;
 margin-left: auto;
 margin-right: auto;
@@ -9,7 +9,7 @@ grid-template-columns: repeat(3, 1fr);
 gap: 17px;
 }
 
-.elements__frame{
+.card{
 width: 282px;
 height: 361px;
 padding: 0;
@@ -27,7 +27,7 @@ outline: none;
 overflow: hidden;
 }
 
-.elements__image{
+.card__image{
 width: 282px;
 height: 282px;
 object-fit: cover;
@@ -36,7 +36,7 @@ outline: none;
 background: transparent;
 }
 
-.elements__text{
+.card__title{
 width: 246px;
 height: 23px;
 margin-left: 11px;
@@ -54,7 +54,7 @@ white-space: nowrap;
 overflow: hidden;
 }
 
-.elements__like-button{
+.card__like-button{
 position: absolute;
 width: 21px;
 height: 19px;
@@ -80,7 +80,7 @@ background: transparent;
 display: none;
 }
 
-.elements__trash-button{
+.card__delete-button{
 position: absolute;
 width: 18px;
 height: 19px;
@@ -95,7 +95,7 @@ background: transparent;
 
 @media screen and (max-width: 880px){
 
-.elements{
+.cards__list{
 width: 581px;
 margin-left: auto;
 margin-right: auto;
@@ -108,7 +108,7 @@ gap: 20px;
 justify-content: center;
 }
 
-.elements__frame{
+.card{
 width: 282px;
 height: 361px;
 padding: 0;
@@ -119,13 +119,9 @@ align-items: flex-start;
 
 }
 
-
-
-
-
 @media screen and (max-width: 600px){
 
-.elements{
+.cards__list{
 width: 284px;
 margin-left: auto;
 margin-right: auto;

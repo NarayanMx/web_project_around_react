@@ -45,18 +45,12 @@ function Main() {
     console.log(cards);
 
   return (
-<>
+    <>
       <Profile onOpenPopup={handleOpenPopup}
       newCardPopup={newCardPopup}
       editProfilePopup={editProfilePopup}
       editAvatarPopup={editAvatarPopup}
        />    
-
-      {popup && (
-      <Popup onClose={handleClosePopup} title={popup.title}>
-      {popup.children}
-      </Popup>
-      )}
 
       <section className="cards">
         <ul className="cards__list">
@@ -65,7 +59,12 @@ function Main() {
           ))}
         </ul>
       </section>
-    
+
+      {popup && (
+      <Popup onClose={handleClosePopup} title={popup.title}>
+      {popup.children}
+      </Popup>
+      )}    
  
     </>
   );
