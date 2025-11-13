@@ -5,6 +5,7 @@ import NewCard from "./form/NewCard/NewCard.jsx"
 import EditProfile from "./form/EditProfile/EditProfile.jsx"
 import EditAvatar from "./form/EditAvatar/EditAvatar.jsx"
 import Profile from "../Profile/Profile";
+import Card from "../Card/Card.jsx";
 
 function Main() {
 
@@ -49,16 +50,21 @@ function Main() {
       newCardPopup={newCardPopup}
       editProfilePopup={editProfilePopup}
       editAvatarPopup={editAvatarPopup}
-       />
-
-
-    
+       />    
 
       {popup && (
       <Popup onClose={handleClosePopup} title={popup.title}>
       {popup.children}
       </Popup>
       )}
+
+      <section className="cards">
+        <ul className="cards__list">
+          {cards.map((card) => (
+          <Card key={card._id} card={card}/>
+          ))}
+        </ul>
+      </section>
     
  
     </>
