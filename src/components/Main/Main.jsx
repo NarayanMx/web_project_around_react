@@ -50,7 +50,7 @@ function Main() {
        />
 
 
-    <section className="elements">
+    
 
       {popup && (
       <Popup onClose={handleClosePopup} title={popup.title}>
@@ -58,7 +58,7 @@ function Main() {
       </Popup>
       )}
     
-    </section>
+ 
     </>
   );
 }
