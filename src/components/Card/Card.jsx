@@ -3,39 +3,37 @@ import React from "react";
 function Card ({ card}) {
   return (
 
-    <section className="elements">
+    <li className="card"> {/*Clase anterior elements__frame*/}
+      <img 
+        src={card.link} 
+        alt={card.name} 
+        className="card__image" {/*Clase anterior elements__image*/}
+      />
 
-      <div className="elements__frame"> 
+      <button 
+      className="card__delete-button" {/*Clase anterior elements__trash-button*/}
+      type="button"
+      aria-label="Delete card"> 
         <img 
-          src={card.link} 
-          alt={card.name} 
-          className="elements__image"
+          src="./images/Trash_Button.png"
+          alt="botón eliminar activado"
         />
-        <p className="elements__text">{card.name}</p>
+      </button>
 
-        <button className="elements__trash-button" type="button"> 
-          <img 
-            src="./images/Trash_Button.png"
-            alt="botón eliminar activado"
-          />
-        </button>
+      <div className="card__description">
 
-        <button className="elements__black-button">  
-          <img 
-            src="./images/like_on.png" 
-            alt="botón me gusta activado" 
-          />
-        </button>
+        <h2 className="card__title">{card.name}</h2> {/*Clase anterior elements__text*/}
 
-        <button className="elements__like-button" type="button">  
+        <button 
+        className="card__like-button" {/*Clase anterior elements__black-button*/}
+        aria-label="Like card">  
           <img 
             src="./images/like_off.jpg" 
-            alt="botón me gusta desactivado" 
+            alt="botón me gusta" 
           />
         </button>
       </div>
-
-    </section>
+    </li>
 
   );
 }
