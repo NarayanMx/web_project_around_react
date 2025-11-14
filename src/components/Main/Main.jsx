@@ -42,8 +42,6 @@ function Main() {
       },
     ];
 
-    console.log(cards);
-
   return (
     <>
       <Profile onOpenPopup={handleOpenPopup}
