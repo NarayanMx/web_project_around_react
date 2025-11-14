@@ -6,11 +6,12 @@ import EditProfile from "./form/EditProfile/EditProfile.jsx"
 import EditAvatar from "./form/EditAvatar/EditAvatar.jsx"
 import Profile from "../Profile/Profile";
 import Card from "../Card/Card.jsx";
+import ImagePopup from "../ImagePopup/ImagePopup.jsx";
 
 function Main() {
 
-      const [popup, setPopup] = useState(null);
-
+    const [popup, setPopup] = useState(null);
+ 
     const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
     const editProfilePopup = { title: "Editar Perfíl", children: <EditProfile /> };
     const editAvatarPopup = { title: "Editar Avatar", children: <EditAvatar /> };
@@ -53,7 +54,10 @@ function Main() {
       <section className="cards">
         <ul className="cards__list">
           {cards.map((card) => (
-          <Card key={card._id} card={card}/>
+          <Card 
+          key={card._id} 
+          card={card} 
+          handleOpenPopup={handleOpenPopup}/>
           ))}
         </ul>
       </section>

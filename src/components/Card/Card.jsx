@@ -1,21 +1,27 @@
 import React from "react";
+import ImagePopup from "../ImagePopup/ImagePopup";
 
-function Card ({card}) {
+function Card ({card, handleOpenPopup}) {
 
   const { name, link, isLiked } = card;
 
+  const imageComponent = {
+    title: null,
+    children: <ImagePopup card={card} />
+  };
+
   return (
 
-    <li className="card"> {/*Clase anterior elements__frame*/}
+    <li className="card"> 
       <img 
         src={link} 
         alt={name} 
-        className="card__image" /*Clase anterior elements__image*/
+        className="card__image"
+        onClick={() => handleOpenPopup(imageComponent)} 
       />
 
       <button 
-        className="card__delete-button" /*Clase anterior elements__trash-button*/
-        type="button"
+        className="card__delete-button" 
         aria-label="Delete card"> 
         <img 
           src="./images/Trash_Button.png"
@@ -25,10 +31,10 @@ function Card ({card}) {
 
       <div className="card__description">
 
-        <h2 className="card__title">{name}</h2> {/*Clase anterior elements__text*/}
+        <h2 className="card__title">{name}</h2>
 
         <button 
-          className="card__like-button" /*Clase anterior elements__black-button*/
+          className="card__like-button" 
           aria-label="Like card">  
           <img 
             src="./images/like_off.jpg" 

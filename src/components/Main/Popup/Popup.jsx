@@ -21,7 +21,7 @@ export default function Popup(props) {
         />
       </button>
 
-      <p className="popup__title">{title}</p>
+      {title && <p className="popup__title">{title}</p>}
 
       <div className="popup__limit">
         {children}
