@@ -29,10 +29,20 @@ display:flex;
   position: relative;
 }
 
+.popup__container_content_image{
+  background-color: rgba(106, 17, 17, 0.667);
+width: auto !important;       
+  height: auto;          
+  padding: 0;            
+  display: inline-block;
+}
+
+
+
 .popup__close-button{
 position: absolute;
-right: -43px;
-top:-38px;
+right: -38px;
+top: -38px;
 border: none;
 background: transparent;
 }

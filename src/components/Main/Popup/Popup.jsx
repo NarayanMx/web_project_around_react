@@ -11,7 +11,11 @@ export default function Popup(props) {
   return (
 
   <div className="popup" onClick={handleOverlayClick}> 
-    <div className="popup__container">
+    <div 
+      className={`${
+          !title ? "display__frame" : "popup__container"
+        }`}
+    >
 
       <button className="popup__close-button" onClick={onClose}>
         <img
@@ -23,7 +27,9 @@ export default function Popup(props) {
 
       {title && <p className="popup__title">{title}</p>}
 
-      <div className="popup__limit">
+      <div className={`${
+          !title ? "" : "popup__limit"
+        }`}>
         {children}
       </div>
       
