@@ -1,13 +1,18 @@
 import React from "react";
 import avatarImg from "../../../images/Profile_pic.png";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Profile({ onOpenPopup, editProfilePopup, newCardPopup, editAvatarPopup }) {
+ 
+  const { currentUser } = useContext(CurrentUserContext);
+  
   return (
 
 <section className="profile">
   <div className="profile__image-wrapper">
     <img
-      src={avatarImg}
+      src={currentUser.avatar}
       alt="Imagen de perfil"
       className="profile__image"
     />
@@ -20,8 +25,8 @@ function Profile({ onOpenPopup, editProfilePopup, newCardPopup, editAvatarPopup 
   </div>
 
   <div className="profile__info">
-    <h1 className="profile__name">Jacques Cousteau</h1>
-    <p className="profile__role">Explorador</p>
+    <h1 className="profile__name">{currentUser.name}</h1>
+    <p className="profile__role">{currentUser.about}</p>
     <button className="profile__edit-button" onClick={() => onOpenPopup(editProfilePopup)}>
       <img
         src="./images/Edit_Button.png"

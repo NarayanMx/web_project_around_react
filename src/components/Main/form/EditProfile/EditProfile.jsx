@@ -13,8 +13,8 @@ return (
         name="nombre"
         placeholder="Nombre"
         className="popup__name popup__input"
-        minlength="2"
-        maxlength="40"
+        minLength="2"
+        maxLength="40"
         id="name-input"
         required
       />
@@ -27,8 +27,8 @@ return (
         name="acerca"
         placeholder="Acerca de mí"
         className="popup__acerca popup__input"
-        minlength="2"
-        maxlength="200"
+        minLength="2"
+        maxLength="200"
         id="about-input"
         required
       />
