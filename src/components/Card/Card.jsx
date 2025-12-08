@@ -37,8 +37,9 @@ function Card ({card, handleOpenPopup}) {
           className="card__like-button" 
           aria-label="Like card">  
           <img 
-            src="./images/like_off.jpg" 
+            src={isLiked ? "./images/like_on.png" : "./images/like_off.jpg" }
             alt="botón me gusta" 
+            className="card__like-image"
           />
         </button>
       </div>
