@@ -40,6 +40,25 @@ function Main() {
 
     const { currentUser } = useContext(CurrentUserContext);
 
+    const handleCardLike = (card) => {
+      const isLiked = card.isLiked;
+
+      const apiMethod = isLiked ? api.unlikeCard(card._id) : api.likeCard(card._id);
+
+      apiMethod
+      .then ((updatedCard) => {
+        setCards((state) =>
+        state.map((currentCard) =>
+        currentCard._id === card._id ? updatedCard : currentCard
+      )
+    );
+   })
+   .catch ((error) => {
+    console.error("Error al cambiar el like:", error);
+   });
+    };
+
+
   return (
     <>
       <Profile onOpenPopup={handleOpenPopup}
@@ -54,7 +73,8 @@ function Main() {
           <Card 
           key={card._id} 
           card={card} 
-          handleOpenPopup={handleOpenPopup}/>
+          handleOpenPopup={handleOpenPopup}
+          onCardLike={handleCardLike}/>
           ))}
         </ul>
       </section>

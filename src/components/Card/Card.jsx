@@ -1,7 +1,7 @@
 import React from "react";
 import ImagePopup from "../ImagePopup/ImagePopup";
 
-function Card ({card, handleOpenPopup}) {
+function Card ({card, handleOpenPopup, onCardLike}) {
 
   const { name, link, isLiked } = card;
 
@@ -35,7 +35,8 @@ function Card ({card, handleOpenPopup}) {
 
         <button 
           className="card__like-button" 
-          aria-label="Like card">  
+          aria-label="Like card"
+          onClick={() => onCardLike(card)}>  
           <img 
             src={isLiked ? "./images/like_on.png" : "./images/like_off.jpg" }
             alt="botón me gusta" 
