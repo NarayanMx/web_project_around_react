@@ -9,6 +9,7 @@ import CurrentUserContext from "./contexts/CurrentUserContext.js";
 function App() {
 
   const [currentUser, setCurrentUser] = useState({});
+  const [popup, setPopup] = useState(null);
 
   useEffect (() => {
     api.getUserInfo()
@@ -20,10 +21,19 @@ function App() {
     });
   }, []);
 
+const handleOpenPopup = (popup) => {
+  setPopup(popup);
+};
+
+const handleClosePopup = () => {
+  setPopup(null);
+};
+
   const handleUpdateUser = (data) => {
     api.updateUserInfo(data)
     .then((newData) => {
       setCurrentUser(newData);
+      handleClosePopup();
     })
     .catch((error) => {
       console.error("Error al actualizar usuario:", error);
@@ -34,7 +44,11 @@ function App() {
     <div className="page">
       <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser }}>
         <Header />
-        <Main />
+        <Main 
+          onOpenPopup={handleOpenPopup}
+          onClosePopup={handleClosePopup}
+          popup={popup}
+        />
         <Footer />
       </CurrentUserContext.Provider>
     </div>

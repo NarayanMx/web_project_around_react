@@ -10,21 +10,21 @@ import ImagePopup from "../ImagePopup/ImagePopup.jsx";
 import api from "../../utils/api.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
-function Main() {
+function Main({onOpenPopup, onClosePopup, popup}) {
 
-    const [popup, setPopup] = useState(null);
+    //const [popup, setPopup] = useState(null);
  
     const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
     const editProfilePopup = { title: "Editar Perfíl", children: <EditProfile /> };
     const editAvatarPopup = { title: "Editar Avatar", children: <EditAvatar /> };
 
-    const handleClosePopup = () => {
+    /*const handleClosePopup = () => {
     setPopup(null);
     };
 
     const handleOpenPopup = (popup) => {
     setPopup(popup);
-    };
+    };*/
 
     const [cards, setCards] = useState([])
 
@@ -67,7 +67,7 @@ function Main() {
 
   return (
     <>
-      <Profile onOpenPopup={handleOpenPopup}
+      <Profile onOpenPopup={onOpenPopup}
       newCardPopup={newCardPopup}
       editProfilePopup={editProfilePopup}
       editAvatarPopup={editAvatarPopup}
@@ -79,7 +79,7 @@ function Main() {
           <Card 
           key={card._id} 
           card={card} 
-          handleOpenPopup={handleOpenPopup}
+          handleOpenPopup={onOpenPopup}
           onCardLike={handleCardLike}
           onCardDelete={handleCardDelete}/>
           ))}
@@ -87,7 +87,7 @@ function Main() {
       </section>
 
       {popup && (
-      <Popup onClose={handleClosePopup} title={popup.title}>
+      <Popup onClose={onClosePopup} title={popup.title}>
       {popup.children}
       </Popup>
       )}    
