@@ -41,14 +41,13 @@ const handleClosePopup = () => {
   };
 
   const handleUpdateAvatar = (data) => {
-    (async () => {
-      await api.setUserAvatar(data).then((newData) => {
+    api.setUserAvatar(data)
+    .then((newData) => {
         setCurrentUser(newData);
         handleClosePopup();
       })
       .catch((error) => console.error(error));
-    })();
-  };
+    };
 
     const [cards, setCards] = useState([])
 
