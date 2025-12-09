@@ -1,8 +1,18 @@
+import { useRef, useContext } from "react";
+import CurrentUserContext from "../../../../contexts/CurrentUserContext";
+
 export default function EditAvatar() {
+
+    const { handleUpdateAvatar } = useContext(CurrentUserContext);
 
     const handleSubmit = (e) => {
     e.preventDefault();
+    handleUpdateAvatar({
+      avatar:avatarRef.current.value
+    });
     };
+
+    const avatarRef = useRef();
 
 return (
 
@@ -10,6 +20,7 @@ return (
 
     <label className="popupImg__field">
       <input
+        ref={avatarRef}
         type="url"
         name="url"
         placeholder="Enlace a la imagen"

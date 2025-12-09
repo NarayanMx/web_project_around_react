@@ -40,9 +40,19 @@ const handleClosePopup = () => {
     });
   };
 
+  const handleUpdateAvatar = (data) => {
+    (async () => {
+      await api.setUserAvatar(data).then((newData) => {
+        setCurrentUser(newData);
+        handleClosePopup();
+      })
+      .catch((error) => console.error(error));
+    })();
+  };
+
   return (
     <div className="page">
-      <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser }}>
+      <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser, handleUpdateAvatar }}>
         <Header />
         <Main 
           onOpenPopup={handleOpenPopup}
