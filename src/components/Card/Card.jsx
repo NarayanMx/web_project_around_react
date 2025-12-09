@@ -1,7 +1,7 @@
 import React from "react";
 import ImagePopup from "../ImagePopup/ImagePopup";
 
-function Card ({card, handleOpenPopup, onCardLike}) {
+function Card ({card, handleOpenPopup, onCardLike, onCardDelete}) {
 
   const { name, link, isLiked } = card;
 
@@ -9,6 +9,10 @@ function Card ({card, handleOpenPopup, onCardLike}) {
     title: null,
     children: <ImagePopup card={card} />
   };
+
+  function handleCardDelete() {
+    onCardDelete(card);
+  }
 
   return (
 
@@ -22,7 +26,8 @@ function Card ({card, handleOpenPopup, onCardLike}) {
 
       <button 
         className="card__delete-button" 
-        aria-label="Delete card"> 
+        aria-label="Delete card"
+        onClick={handleCardDelete}> 
         <img 
           src="./images/Trash_Button.png"
           alt="botón eliminar activado"

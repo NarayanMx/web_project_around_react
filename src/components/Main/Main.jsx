@@ -58,6 +58,12 @@ function Main() {
    });
     };
 
+    async function handleCardDelete(card) {
+      await api.deleteCard(card._id).then (() => {
+        setCards((state) => state.filter((currentCard) => currentCard._id !== card._id));
+      }).catch((error) => console.error(error));
+    }
+
 
   return (
     <>
@@ -74,7 +80,8 @@ function Main() {
           key={card._id} 
           card={card} 
           handleOpenPopup={handleOpenPopup}
-          onCardLike={handleCardLike}/>
+          onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}/>
           ))}
         </ul>
       </section>
