@@ -50,11 +50,65 @@ const handleClosePopup = () => {
     })();
   };
 
+    const [cards, setCards] = useState([])
+
+        useEffect(() => {
+      api.getInitialCards ()
+      .then((cardsData) => {
+        setCards(cardsData);
+      })
+      .catch((error) => {
+        console.error("Error al obtener las tarjetas:", error);
+      });
+    }, []);
+
+        const handleCardLike = (card) => {
+      const isLiked = card.isLiked;
+
+      const apiMethod = isLiked ? api.unlikeCard(card._id) : api.likeCard(card._id);
+
+      apiMethod
+      .then ((updatedCard) => {
+        setCards((state) =>
+        state.map((currentCard) =>
+        currentCard._id === card._id ? updatedCard : currentCard
+      )
+    );
+   })
+   .catch ((error) => {
+    console.error("Error al cambiar el like:", error);
+   });
+    };
+
+    async function handleCardDelete(card) {
+      await api.deleteCard(card._id).then (() => {
+        setCards((state) => state.filter((currentCard) => currentCard._id !== card._id));
+      }).catch((error) => console.error(error));
+    }
+
+    const handleAddPlaceSubmit = (cardData) => {
+      api.addCard(cardData)
+      .then((newCard) => {
+        setCards ([newCard, ...cards]);
+        handleClosePopup();
+      })
+      .catch((error) => {
+        console.error("Error al agregar tarjeta:", error);
+      });
+    };
+
+
+
+
+
   return (
     <div className="page">
-      <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser, handleUpdateAvatar }}>
+      <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser, handleUpdateAvatar, handleAddPlaceSubmit }}>
         <Header />
         <Main 
+          cards={cards}
+          onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
           onOpenPopup={handleOpenPopup}
           onClosePopup={handleClosePopup}
           popup={popup}
