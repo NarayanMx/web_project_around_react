@@ -1,4 +1,19 @@
+import { useState, useContext } from "react";
+import {CurrentUserContext, handleUpdateUser} from "../../../../contexts/CurrentUserContext";
+
 export default function EditProfile() {
+
+  const { currentUser } = useContext(CurrentUserContext);
+  const [name, setName] = useState(currentUser.name || "")
+  const [description, setDescription] = useState(currentUser.about || "");
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
+  };
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +31,8 @@ return (
         minLength="2"
         maxLength="40"
         id="name-input"
+        value={name}
+        onChange={handleNameChange}
         required
       />
       <span className="popup__input-error" id="name-input-error"></span>
@@ -30,6 +47,8 @@ return (
         minLength="2"
         maxLength="200"
         id="about-input"
+        value={description}
+        onChange={handleDescriptionChange}
         required
       />
       <span className="popup__input-error" id="about-input-error"></span>
