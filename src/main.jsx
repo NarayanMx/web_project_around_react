@@ -1,3 +1,3 @@
-export default function dummy() {
+export default function Main() {
   return null;
 }
